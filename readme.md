@@ -33,4 +33,4 @@ afile(targets, function(afilepath) {
 
 ## License
 
-MIT © [ragingwind](http://ragingwind.me)
+MIT © [Jimmy Moon](http://ragingwind.me)
