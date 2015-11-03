@@ -1,7 +1,7 @@
 {
   "name": "afile",
   "version": "0.1.0",
-  "description": "My marvelous module",
+  "description": "Find a file on the lis",
   "license": "MIT",
   "repository": "ragingwind/afile",
   "author": {
