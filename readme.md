@@ -1,4 +1,4 @@
-# afile [![Build Status](https://travis-ci.org/ragingwind/afile.svg?branch=master)](https://travis-ci.org/ragingwind/afile)
+# afile
 
 > Find a file on the list
 
