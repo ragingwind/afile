@@ -2,7 +2,6 @@
 
 var fs = require('fs');
 var path = require('path');
-var next = require('next-promise');
 
 function findone(targets, cb) {
 	if (targets.length === 0) {
