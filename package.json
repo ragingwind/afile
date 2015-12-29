@@ -19,7 +19,10 @@
     "index.js"
   ],
   "keywords": [
-    ""
+    "file",
+    "lookup",
+    "find",
+    "afile"
   ],
   "devDependencies": {
     "mocha": "*"
