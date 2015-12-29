@@ -1,7 +1,7 @@
 {
   "name": "afile",
   "version": "0.1.0",
-  "description": "Find a file on the lis",
+  "description": "Find a file on the list",
   "license": "MIT",
   "repository": "ragingwind/afile",
   "author": {
@@ -10,7 +10,7 @@
     "url": "ragingwind.md"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.4.0"
   },
   "scripts": {
     "test": "mocha"
@@ -21,10 +21,6 @@
   "keywords": [
     ""
   ],
-  "dependencies": {
-    "next-promise": "^1.0.1",
-    "q": "^1.4.1"
-  },
   "devDependencies": {
     "mocha": "*"
   }
