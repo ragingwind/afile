@@ -18,12 +18,11 @@ var targets = [
 	process.cwd(),
 	process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'],
 	'/'
-].map(function(p) {
+].map(p => {
 	return path.join(p, '.bowerrc');
 });
 
-afile(targets, function(afilepath) {
-	console.log(afilepath);
+afile(targets, afilepath => {
 	//=> /home/yours/.bowerrc
 });
 ```
