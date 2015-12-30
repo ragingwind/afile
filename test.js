@@ -1,19 +1,19 @@
 'use strict';
 
-var path = require('path');
-var assert = require('assert');
-var afile = require('./');
+import test from 'ava';
+import afile from './';
+import path from 'path';
 
-it('should find bashrc', function () {
-	var targets = [
+test(t => {
+	const targets = [
 		process.cwd(),
-		process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'],
+		process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'],
 		'/'
-	].map(function(p) {
+	].map(function (p) {
 		return path.join(p, '.bashrc');
 	});
 
-	afile(targets, function(afilepath) {
-		assert(afilepath.indexOf(afilepath) >= 0)
+	afile(targets, afilepath => {
+		t.ok(afilepath.indexOf(afilepath) >= 0);
 	});
 });

@@ -1,7 +1,6 @@
 'use strict';
 
 var fs = require('fs');
-var path = require('path');
 
 function findone(targets, cb) {
 	if (targets.length === 0) {
@@ -10,7 +9,7 @@ function findone(targets, cb) {
 	}
 
 	var target = targets.pop();
-	fs.stat(target, function(err, stats) {
+	fs.stat(target, function (err) {
 		if (err) {
 			findone(targets, cb);
 		} else {
