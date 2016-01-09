@@ -8,7 +8,7 @@ function findone(targets, cb) {
 		return;
 	}
 
-	var target = targets.pop();
+	var target = targets.shift();
 	fs.stat(target, function (err) {
 		if (err) {
 			findone(targets, cb);
