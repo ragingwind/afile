@@ -25,3 +25,7 @@ test(t => {
 		t.ok(f);
 	});
 });
+
+test(t => {
+	t.ok(afile.sync(targets));
+});

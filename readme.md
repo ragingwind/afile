@@ -31,9 +31,14 @@ afile(targets).then(function (f) {
 });
 
 // callback style
-afile(targets, f => {
+afile.cb(targets, f => {
 	console.log(f);
 	//=> /home/yours/.bowerrc
+});
+
+// sync style
+afile.sync(targets);
+//=> /home/yours/.bowerrc
 });
 ```
 
@@ -46,7 +51,11 @@ return promise, will resolve if target file is exist.
 
 ### afile.cb(tagets, cb)
 
-callback style, will pass with target file or not.
+callback style, will pass with target file path or not.
+
+### afile.sync(targets)
+
+return target file path or null.
 
 ## License
 

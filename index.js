@@ -2,6 +2,14 @@
 
 var fs = require('fs');
 
+function arrify(a) {
+	if (!Array.isArray(a)) {
+		a = [a];
+	}
+
+	return a.slice(0);
+}
+
 function findone(targets, cb) {
 	if (targets.length === 0) {
 		cb(null);
@@ -9,8 +17,8 @@ function findone(targets, cb) {
 	}
 
 	var target = targets.shift();
-	fs.stat(target, function (err) {
-		if (err) {
+	fs.stat(target, function (err, stat) {
+		if (err || !stat.isFile()) {
 			findone(targets, cb);
 		} else {
 			cb(target);
@@ -19,12 +27,24 @@ function findone(targets, cb) {
 	});
 }
 
-function afile(targets, cb) {
-	if (!Array.isArray(targets)) {
-		targets = [targets];
+function findoneSync(targets) {
+	for (var i = 0; i < targets.length; ++i) {
+		try {
+			if (fs.statSync(targets[i]).isFile()) {
+				return targets[i];
+			}
+		} catch (e) {}
 	}
 
-	findone(targets.slice(0), cb);
+	return null;
+}
+
+function afile(targets, cb) {
+	if (cb) {
+		return findone(arrify(targets), cb);
+	}
+
+	return findoneSync(arrify(targets));
 }
 
 module.exports = function (targets) {
@@ -39,4 +59,4 @@ module.exports = function (targets) {
 	});
 };
 
-module.exports.cb = afile;
+module.exports.cb = module.exports.sync = afile;
