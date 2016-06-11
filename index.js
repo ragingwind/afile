@@ -1,6 +1,6 @@
 'use strict';
 
-var fs = require('fs');
+const fs = require('fs');
 
 function arrify(a) {
 	if (!Array.isArray(a)) {
@@ -27,36 +27,14 @@ function findone(targets, cb) {
 	});
 }
 
-function findoneSync(targets) {
-	for (var i = 0; i < targets.length; ++i) {
-		try {
-			if (fs.statSync(targets[i]).isFile()) {
-				return targets[i];
-			}
-		} catch (e) {}
-	}
-
-	return null;
-}
-
 function afile(targets, cb) {
-	if (cb) {
-		return findone(arrify(targets), cb);
-	}
-
-	return findoneSync(arrify(targets));
+	return findone(arrify(targets), cb);
 }
 
 module.exports = function (targets) {
 	return new Promise(function (resolve, reject) {
-		afile(targets, function (f) {
-			if (f) {
-				resolve(f);
-			} else {
-				reject(new Error('Not found a file'));
-			}
+		afile(targets, f => {
+			return f ? resolve(f) : reject(new Error('Not found a file'));
 		});
 	});
 };
-
-module.exports.cb = module.exports.sync = afile;
