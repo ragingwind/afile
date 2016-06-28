@@ -33,8 +33,6 @@ function afile(targets, cb) {
 
 module.exports = function (targets) {
 	return new Promise(function (resolve, reject) {
-		afile(targets, f => {
-			return f ? resolve(f) : reject(new Error('Not found a file'));
-		});
+		afile(targets, f => f ? resolve(f) : reject(new Error('Not found a file')));
 	});
 };
